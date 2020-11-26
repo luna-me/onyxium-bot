@@ -23,8 +23,7 @@ async def help(ctx):
 
 	last_message = ctx.channel.last_message_id
 	message = await ctx.channel.fetch_message(int(last_message))
-	await message.add_reaction(emoji='✅')
+
+	await message.add_reaction(emoji = "<:checkedbox:781556049953423373>") # will probably mess up later on
 
 client.run(token)
-
-# small commits are for code management, not releases
