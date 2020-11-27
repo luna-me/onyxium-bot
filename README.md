@@ -17,6 +17,10 @@ python3 main.py
 https://discord.com/api/oauth2/authorize?client_id=772944435020431392&permissions=8&scope=bot
 `
 
+## TODO
+Add a cog system
+Add choosing prefixes
+
 ## Contributing
 Pull requests are welcome. Code should be up to standard as our current repository's code.
 
