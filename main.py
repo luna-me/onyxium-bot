@@ -54,4 +54,24 @@ async def kick(ctx, member: discord.Member, *, reason=None):
     await member.kick(reason=reason)
     await ctx.send(f":tools: {member.mention} has been kicked for **{reason}**")
 
+@client.command()
+@commands.has_guild_permissions(ban_members=True)
+async def ban(ctx, member: discord.Member, *, reason=None):
+    await member.ban(reason=reason)
+    await ctx.send(f":tools: {member.mention} has been banned for **{reason}**")
+
+@client.command()
+@commands.has_guild_permissions(administrator=True)
+async def unban(ctx, *, member):
+    banned_users = await ctx.guild.bans()
+    member_name, member_discr = member.split('#')
+
+    for ban_entry in banned_users:
+        user = ban_entry.user
+        
+        if (user.name, user.discriminator) == (member_name, member_discr): # only takes name and discrim
+            await ctx.guild.unban(user)
+            await ctx.send(f":tools: **{user.name}#{user.discriminator}** has been unbanned")
+            return
+
 client.run(token)
