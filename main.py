@@ -74,4 +74,9 @@ async def unban(ctx, *, member):
             await ctx.send(f":tools: **{user.name}#{user.discriminator}** has been unbanned")
             return
 
+@client.command()
+@commands.has_guild_permissions(manage_messages=True)
+async def purge(ctx, amount: int):
+    await ctx.channel.purge(limit=amount + 1)
+
 client.run(token)
