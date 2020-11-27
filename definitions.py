@@ -16,13 +16,3 @@ def timedelta_str(dt):
         return '{0} days, {1} hours, {2} minute and {3} seconds.'.format(days,hours,minutes,sec)
     else:
         return '{0} days, {1} hours, {2} minutes and {3} seconds.'.format(days,hours,minutes,sec)
-
-# ip command
-import requests
-import json
-
-def nullFix(inp):
-    if len(str(inp)) > 0:
-        return str(inp)
-    else:
-        return 'null' # must return null if certain values are empty
