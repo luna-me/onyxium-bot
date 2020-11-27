@@ -26,4 +26,8 @@ async def help(ctx):
 
 	await message.add_reaction(emoji = "<:checkedbox:781556049953423373>") # will probably mess up later on
 
+@client.command()
+async def ping(ctx):
+	await ctx.send(f':hourglass_flowing_sand: Pong! **Latency**: {round(client.latency * 1000)}ms')
+
 client.run(token)
