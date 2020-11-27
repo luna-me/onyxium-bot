@@ -2,12 +2,20 @@
 
 Onyxium is a multipurpose Discord bot written in Python.
 
-## How to use onyxium:
-In order to use onyxium for your own server, you must run the code in your IDE or on a VPS. 
+Onyxium was developed as a project for me to learn Python.
 
-```
+## How to use Onyxium:
+In order to use Onyxium for your own server, you must run the code in your IDE or on a VPS. 
+### VPS
+
+`
 python3 main.py
-```
+`
+
+### Invite link
+`
+https://discord.com/api/oauth2/authorize?client_id=772944435020431392&permissions=8&scope=bot
+`
 
 ## Contributing
 Pull requests are welcome. Code should be up to standard as our current repository's code.
