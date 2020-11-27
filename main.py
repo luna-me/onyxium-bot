@@ -3,7 +3,7 @@ from definitions import *
 
 from discord.ext import commands
 
-token = "NzcyOTQ0NDM1MDIwNDMxMzky.X6CCmQ._Gy_CahUTRBDDHnYHCqn_Pzeuog"
+token = ""
 prefix = "/"
 
 client = commands.Bot(command_prefix = prefix) 
