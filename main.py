@@ -1,4 +1,5 @@
 import discord
+from definitions import *
 
 from discord.ext import commands
 
@@ -7,6 +8,7 @@ prefix = "/"
 
 client = commands.Bot(command_prefix = prefix) 
 client.remove_command('help')
+
 
 @client.event
 async def on_ready():
@@ -29,5 +31,10 @@ async def help(ctx):
 @client.command()
 async def ping(ctx):
 	await ctx.send(f':hourglass_flowing_sand: Pong! **Latency**: {round(client.latency * 1000)}ms')
+
+@client.command()
+async def uptime(ctx):
+    global start_time
+    await ctx.send(":alarm_clock: **Bot uptime**: " + timedelta_str(datetime.datetime.now() - start_time))
 
 client.run(token)
