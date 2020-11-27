@@ -48,4 +48,10 @@ async def ip(ctx, *, ip):
         embed.add_field(name=list(info)[i], value=nullFix(list(info.values())[i]))
     await ctx.send(embed=embed)
 
+@client.command()
+@commands.has_guild_permissions(kick_members=True)
+async def kick(ctx, member: discord.Member, *, reason=None):
+    await member.kick(reason=reason)
+    await ctx.send(f":tools: {member.mention} has been kicked for **{reason}**")
+
 client.run(token)
