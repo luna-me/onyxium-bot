@@ -21,12 +21,12 @@ async def help(ctx):
 	author = ctx.message.author
 	embed=discord.Embed(title="onyxium", description="help commands", color=0x3eb489)
 	embed.add_field(name="ping", value="Bot latency", inline=True)
-    embed.add_field(name="uptime", value="see bot uptime", inline=True)
-    embed.add_field(name="ip", value="see specific ip details", inline=True)
-    embed.add_field(name="kick", value="kick a user from server", inline=True)
-    embed.add_field(name="ban", value="ban a user from server", inline=True)
-    embed.add_field(name="unban", value="unban a user from server", inline=True)
-    embed.add_field(name="purge", value="purge a number of messages", inline=True)
+	embed.add_field(name="uptime", value="see bot uptime", inline=True)
+	embed.add_field(name="ip", value="see specific ip details", inline=True)
+	embed.add_field(name="kick", value="kick a user from server", inline=True)
+	embed.add_field(name="ban", value="ban a user from server", inline=True)
+	embed.add_field(name="unban", value="unban a user from server", inline=True)
+	embed.add_field(name="purge", value="purge a number of messages", inline=True)
 
 	await author.send(embed=embed)
 
