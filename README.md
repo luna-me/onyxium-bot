@@ -18,9 +18,9 @@ https://discord.com/api/oauth2/authorize?client_id=772944435020431392&permission
 `
 
 ## TODO
-Add a cog system
-Add choosing prefixes
-Make help commands easier to read or upload on a website
+All features or issues being worked on are in the issues tab.
+Feel free to make an issue if you feel the need to do so.
+Provide information a developer could use.
 
 ## Contributing
 Pull requests are welcome. Code should be up to standard as our current repository's code.

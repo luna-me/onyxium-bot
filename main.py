@@ -14,7 +14,7 @@ client.remove_command('help')
 @client.event
 async def on_ready():
     print('Logged in as {0.user}'.format(client))
-    await client.change_presence(activity=discord.Game(name='github.com/noor0x07/onyxium-bot'))
+    await client.change_presence(activity=discord.Game(name='/help | github.com/noor0x07/onyxium-bot'))
 
 @client.command(pass_context=True)
 async def help(ctx):
@@ -27,6 +27,8 @@ async def help(ctx):
 	embed.add_field(name="ban", value="ban a user from server", inline=True)
 	embed.add_field(name="unban", value="unban a user from server", inline=True)
 	embed.add_field(name="purge", value="purge a number of messages", inline=True)
+	embed.add_field(name="whois", value="show info about an account", inline=True)
+	embed.add_field(name="avatar", value="see a user's avatar", inline=True)
 
 	await author.send(embed=embed)
 
@@ -84,5 +86,29 @@ async def unban(ctx, *, member):
 @commands.has_guild_permissions(manage_messages=True)
 async def purge(ctx, amount: int):
     await ctx.channel.purge(limit=amount + 1)
+
+@client.command()
+@commands.has_guild_permissions(administrator=True)
+async def whois(ctx, member: discord.Member = None):
+	roles = [role for role in member.roles if role != ctx.guild.default_role]
+	embed = discord.Embed(color=0x3eb489, timestamp=ctx.message.created_at, title=f"Who is - {member}")
+	embed.set_thumbnail(url=member.avatar_url)
+	embed.set_footer(text=f"Requested by {ctx.author}")
+
+	embed.add_field(name="ID:", value=member.id)
+	embed.add_field(name="Name:", value=member.display_name)
+
+	embed.add_field(name="Created account on:", value=member.created_at.strftime("%a, %#d %B %Y at %I:%M %p UTC"))
+	embed.add_field(name="Joined server on:", value=member.joined_at.strftime("%a, %#d %B %Y at %I:%M %p UTC"))
+
+	embed.add_field(name="Roles:", value="".join([role.mention for role in roles]))
+	embed.add_field(name="Highest Role:", value=member.top_role.mention)
+	await ctx.send(embed=embed)
+
+@client.command(aliases=['pfp','av'])
+async def avatar(ctx, member: discord.Member):
+	show_avatar = discord.Embed(color=0x3eb489, description=f":bust_in_silhouette: **{member.display_name}**'s avatar : ")
+	show_avatar.set_image(url='{}'.format(member.avatar_url))
+	await ctx.send(embed=show_avatar)
 
 client.run(token)
