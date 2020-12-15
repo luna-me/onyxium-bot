@@ -1,7 +1,6 @@
 # uptime definitions
 import datetime
 
-global start_time
 start_time = datetime.datetime.now()
 
 def timedelta_str(dt):
