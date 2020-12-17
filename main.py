@@ -13,7 +13,8 @@ client.remove_command('help')
 @client.event
 async def on_ready():
 	print('Logged in as {0.user}'.format(client))
-	await client.change_presence(activity=discord.Game(name="/help | I'm in " + str(len(client.guilds)) + " servers"))
+	print("Currently in "+str(len(client.guilds)) + " server(s)")
+	await client.change_presence(activity=discord.Game(name="/help | https://github.com/noor0x07/onyxium-bot/"))
 
 
 @client.command(pass_context=True)
