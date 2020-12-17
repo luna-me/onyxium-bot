@@ -30,6 +30,7 @@ async def help(ctx):
 	embed.add_field(name="```whois```", value="show info about an account", inline=False)
 	embed.add_field(name="```avatar```", value="see a user's avatar", inline=False)
 	embed.add_field(name="```info```", value="info about bot", inline=False)
+	embed.add_field(name="```say```", value="make the bot say something", inline=False)
 	embed.set_footer(text='https://github.com/noor0x07/onyxium-bot')
 	last_message = ctx.channel.last_message_id
 	message = await ctx.channel.fetch_message(int(last_message))
@@ -137,6 +138,12 @@ async def invite(ctx):
 	embed.add_field(name='GitHub Repo', value='[here](https://github.com/noor0x07/onyxium-bot)', inline=False)
 	embed.add_field(name='Discord Link', value='[here](https://discord.gg/adCPaYNEGv)', inline=False)
 	await ctx.send(embed=embed)
+
+
+@client.command()
+@commands.has_guild_permissions(administrator=True)
+async def say(ctx, *, message=None):
+	await ctx.send(message)
 
 
 client.run(token)
