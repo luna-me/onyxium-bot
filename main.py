@@ -20,7 +20,7 @@ async def on_ready():
 async def help(ctx):
 	author = ctx.message.author
 	embed = discord.Embed(title="Onyxium", description="This is a list of all the current commands", color=0x3eb489)
-	embed.add_field(name="```ping```",value="Bot latency", inline=False)
+	embed.add_field(name="```ping```", value="Bot latency", inline=False)
 	embed.add_field(name="```uptime```", value="see bot uptime", inline=False)
 	embed.add_field(name="```ip```", value="see specific ip details", inline=False)
 	embed.add_field(name="```kick```", value="kick a user from server", inline=False)
@@ -29,7 +29,7 @@ async def help(ctx):
 	embed.add_field(name="```purge```", value="purge a number of messages", inline=False)
 	embed.add_field(name="```whois```", value="show info about an account", inline=False)
 	embed.add_field(name="```avatar```", value="see a user's avatar", inline=False)
-	embed.add_field(name="```info```",value="info about bot", inline=False)
+	embed.add_field(name="```info```", value="info about bot", inline=False)
 	embed.set_footer(text='https://github.com/noor0x07/onyxium-bot')
 	last_message = ctx.channel.last_message_id
 	message = await ctx.channel.fetch_message(int(last_message))
@@ -37,7 +37,6 @@ async def help(ctx):
 	await message.add_reaction(emoji="<:checkedbox:781556049953423373>")  # will probably mess up later on
 	
 	await author.send(embed=embed)
-
 
 
 @client.command()
@@ -123,25 +122,21 @@ async def avatar(ctx, member: discord.Member):
 	await ctx.send(embed=show_avatar)
 
 	
-@client.command(aliases=['about', 'info','links'])
+@client.command(aliases=['about', 'info', 'links'])
 async def invite(ctx):
 	embed = discord.Embed(
-		title = 'Onyxium',
-		description = 'Information and links',
+		title='Onyxium',
+		description='Information and links',
 		colour=0x3eb489
 
 	)
 
 	embed.set_footer(text='')
-	embed.set_thumbnail(url= 'https://cdn.discordapp.com/avatars/772944435020431392/ecfa2b9967914c73faead132eb7b26f6.png?size=128')
+	embed.set_thumbnail(url='https://cdn.discordapp.com/avatars/772944435020431392/ecfa2b9967914c73faead132eb7b26f6.png?size=128')
 	embed.add_field(name='Invite Link', value='[here](https://discord.com/api/oauth2/authorize?client_id=772944435020431392&permissions=8&scope=bot)', inline=False)
 	embed.add_field(name='GitHub Repo', value='[here](https://github.com/noor0x07/onyxium-bot)', inline=False)
 	embed.add_field(name='Discord Link', value='[here](https://discord.gg/adCPaYNEGv)', inline=False)
 	await ctx.send(embed=embed)
-
-
-
-
 
 
 client.run(token)
