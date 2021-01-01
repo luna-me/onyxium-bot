@@ -14,7 +14,7 @@ client.remove_command('help')
 async def on_ready():
 	print('Logged in as {0.user}'.format(client))
 	print("Currently in "+str(len(client.guilds)) + " server(s)")
-	await client.change_presence(activity=discord.Game(name="/help | https://github.com/noor0x07/onyxium-bot/"))
+	await client.change_presence(activity=discord.Game(name="/help | https://github.com/luna-me/onyxium-bot/"))
 
 
 @client.command(pass_context=True)
@@ -26,13 +26,14 @@ async def help(ctx):
 	embed.add_field(name="```ip```", value="see specific ip details", inline=False)
 	embed.add_field(name="```kick```", value="kick a user from server", inline=False)
 	embed.add_field(name="```ban```", value="ban a user from server", inline=False)
+	embed.add_field(name="```softban```", value="ban and unban a user from server", inline=False)
 	embed.add_field(name="```unban```", value="unban a user from server", inline=False)
 	embed.add_field(name="```purge```", value="purge a number of messages", inline=False)
 	embed.add_field(name="```whois```", value="show info about an account", inline=False)
 	embed.add_field(name="```avatar```", value="see a user's avatar", inline=False)
 	embed.add_field(name="```info```", value="info about bot", inline=False)
 	embed.add_field(name="```say```", value="make the bot say something", inline=False)
-	embed.set_footer(text='https://github.com/noor0x07/onyxium-bot')
+	embed.set_footer(text='https://github.com/luna-me/onyxium-bot')
 	last_message = ctx.channel.last_message_id
 	message = await ctx.channel.fetch_message(int(last_message))
 
@@ -90,6 +91,14 @@ async def unban(ctx, *, member):
 			# await ctx.guild.unban(user)
 			await ctx.send(f":tools: **{user.name}#{user.discriminator}** has been unbanned")
 			return
+
+
+@client.command()
+@commands.has_guild_permissions(ban_members=True)
+async def softban(ctx, member: discord.Member, *, reason=None):
+	await member.ban(reason=reason)
+	await member.unban()
+	await ctx.send(f":tools: {member.mention} has been soft-banned for **{reason}**")
 
 
 @client.command(aliases=["prune"])
