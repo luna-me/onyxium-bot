@@ -127,7 +127,8 @@ async def whois(ctx, member: discord.Member = None):
 
 
 @client.command(aliases=['pfp', 'av'])
-async def avatar(ctx, member: discord.Member):
+async def avatar(ctx, member: discord.Member = None):
+	member = member or ctx.author
 	show_avatar = discord.Embed(color=0x3eb489, description=f":bust_in_silhouette: **{member.display_name}**'s avatar : ")
 	show_avatar.set_image(url='{}'.format(member.avatar_url))
 	await ctx.send(embed=show_avatar)
